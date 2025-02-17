@@ -48,41 +48,49 @@ python monitor.py --webhook "YOUR_SLACK_WEBHOOK_URL" --cpu-warning 70 --ram-warn
 
 ## Cài đặt như một Service (Ubuntu)
 
-1. Clone repository về máy:
+1. Clone repository và cài đặt dependencies:
 ```bash
 git clone https://github.com/nghiahsgs/PyAlertEC2.git
 cd PyAlertEC2
-```
-
-2. Cài đặt các dependencies:
-```bash
 pip3 install -r requirements.txt
 ```
 
-3. Sao chép file service vào thư mục systemd:
-```bash
-sudo cp pyalertec2.service /etc/systemd/system/
-```
-
-4. Chỉnh sửa file service để thêm Slack Webhook URL của bạn:
+2. Tạo service file:
 ```bash
 sudo nano /etc/systemd/system/pyalertec2.service
 ```
-Thay `YOUR_SLACK_WEBHOOK_URL` bằng URL webhook thực tế của bạn.
 
-5. Reload systemd và enable service:
+Paste nội dung sau (thay YOUR_SLACK_WEBHOOK_URL bằng URL thực):
+```ini
+[Unit]
+Description=PyAlertEC2 System Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/home/ubuntu/PyAlertEC2
+ExecStart=/usr/bin/python3 /home/ubuntu/PyAlertEC2/monitor.py --webhook YOUR_SLACK_WEBHOOK_URL
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+3. Kích hoạt và chạy service:
 ```bash
 sudo systemctl daemon-reload
 sudo systemctl enable pyalertec2
 sudo systemctl start pyalertec2
 ```
 
-6. Kiểm tra trạng thái service:
+4. Kiểm tra trạng thái service:
 ```bash
 sudo systemctl status pyalertec2
 ```
 
-7. Xem logs:
+5. Xem logs:
 ```bash
 sudo journalctl -u pyalertec2 -f
 ```

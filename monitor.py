@@ -99,9 +99,9 @@ class SystemMonitor:
 def main():
     parser = argparse.ArgumentParser(description='System Resource Monitor with Slack Alerts')
     parser.add_argument('--webhook', required=True, help='Slack Webhook URL')
-    parser.add_argument('--cpu-warning', type=float, default=50, help='CPU warning threshold (default: 50)')
-    parser.add_argument('--cpu-critical', type=float, default=80, help='CPU critical threshold (default: 80)')
-    parser.add_argument('--ram-warning', type=float, default=80, help='RAM warning threshold (default: 80)')
+    parser.add_argument('--cpu-warning', type=float, default=75, help='CPU warning threshold (default: 50)')
+    parser.add_argument('--cpu-critical', type=float, default=85, help='CPU critical threshold (default: 80)')
+    parser.add_argument('--ram-warning', type=float, default=85, help='RAM warning threshold (default: 80)')
     parser.add_argument('--interval', type=int, default=10, help='Check interval in seconds (default: 10)')
     
     args = parser.parse_args()

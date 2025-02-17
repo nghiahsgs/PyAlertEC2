@@ -95,37 +95,6 @@ sudo systemctl status pyalertec2
 sudo journalctl -u pyalertec2 -f
 ```
 
-## Cài đặt nhanh từ bản build (Ubuntu)
-
-1. Tải bản build mới nhất từ [Releases](https://github.com/nghiahsgs/PyAlertEC2/releases)
-2. Giải nén và cài đặt:
-```bash
-tar xzf pyalertec2.tar.gz
-cd pyalertec2
-sudo ./install.sh
-```
-3. Nhập Slack webhook URL của bạn khi được yêu cầu
-
-Xong! Service sẽ tự động chạy và khởi động cùng hệ thống.
-
-## Build từ source
-
-Nếu bạn muốn tự build:
-
-1. Clone repository:
-```bash
-git clone https://github.com/nghiahsgs/PyAlertEC2.git
-cd PyAlertEC2
-```
-
-2. Chạy script build:
-```bash
-chmod +x build.sh
-./build.sh
-```
-
-File build sẽ được tạo tại `pyalertec2.tar.gz`
-
 ## Requirements
 - Python 3.6+
 - psutil

@@ -13,7 +13,7 @@ A simple Python-based system monitoring tool that sends alerts to Slack when CPU
 
 1. **One-line installation (Linux/Mac):**
 ```bash
-wget https://raw.githubusercontent.com/nghiahsgs/PyAlertEC2/main/monitor.py && pip install -r requirements.txt
+wget https://raw.githubusercontent.com/nghiahsgs/PyAlertEC2/main/monitor.py && wget https://raw.githubusercontent.com/nghiahsgs/PyAlertEC2/main/requirements.txt && pip install -r requirements.txt
 ```
 
 2. **Get your Slack Webhook URL:**
@@ -83,6 +83,7 @@ WantedBy=multi-user.target
 sudo systemctl daemon-reload
 sudo systemctl enable pyalertec2
 sudo systemctl start pyalertec2
+sudo systemctl restart pyalertec2
 ```
 
 4. Kiểm tra trạng thái service:
